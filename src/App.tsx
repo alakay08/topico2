@@ -37,59 +37,46 @@ const extractInstagramImage = (url) => {
   return null; // Retorna null si falla
 };
 
-// --- MOCK DATA INICIAL (USANDO TUS ENLACES) ---
 const INITIAL_PRODUCTS = [
-  {
-    id: 1,
-    name: "Prenda Drop 1",
-    price: 850,
-    status: "available",
-    category: "Drop Reciente",
+  { 
+    id: 1, 
+    name: "Prenda Drop 1", 
+    price: 850, 
+    status: 'available', 
+    category: 'Drop Reciente', 
     description: "Excelente estado.",
-    igLink:
-      "https://www.instagram.com/p/DYqefHvEZSW/?igsh=MWc2eDc4MGRienNocw==",
-    imageUrl: extractInstagramImage(
-      "https://www.instagram.com/p/DYqefHvEZSW/?igsh=MWc2eDc4MGRienNocw=="
-    ),
+    igLink: "https://www.instagram.com/p/DYqefHvEZSW/?igsh=MWc2eDc4MGRienNocw==",
+    imageUrl: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=600" // Sudadera/Hoodie
   },
-  {
-    id: 2,
-    name: "Prenda Drop 2",
-    price: 1200,
-    status: "available",
-    category: "Drop Reciente",
+  { 
+    id: 2, 
+    name: "Prenda Drop 2", 
+    price: 1200, 
+    status: 'available', 
+    category: 'Drop Reciente', 
     description: "Talla única.",
-    igLink:
-      "https://www.instagram.com/p/DYqeI_BkWOS/?igsh=MXE2ZWFnemFsZ2F1ZA==",
-    imageUrl: extractInstagramImage(
-      "https://www.instagram.com/p/DYqeI_BkWOS/?igsh=MXE2ZWFnemFsZ2F1ZA=="
-    ),
+    igLink: "https://www.instagram.com/p/DYqeI_BkWOS/?igsh=MXE2ZWFnemFsZ2F1ZA==",
+    imageUrl: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=600" // Sneakers/Tenis
   },
-  {
-    id: 3,
-    name: "Prenda Drop 3",
-    price: 950,
-    status: "sold",
-    category: "Vintage",
+  { 
+    id: 3, 
+    name: "Prenda Drop 3", 
+    price: 950, 
+    status: 'sold', 
+    category: 'Vintage', 
     description: "Pieza de colección.",
-    igLink:
-      "https://www.instagram.com/p/DYqd72TkQUx/?igsh=MTlhcTVpaTFlazEwdQ==",
-    imageUrl: extractInstagramImage(
-      "https://www.instagram.com/p/DYqd72TkQUx/?igsh=MTlhcTVpaTFlazEwdQ=="
-    ),
+    igLink: "https://www.instagram.com/p/DYqd72TkQUx/?igsh=MTlhcTVpaTFlazEwdQ==",
+    imageUrl: "https://images.unsplash.com/photo-1578932750294-f5075e85f44a?q=80&w=600" // Chamarra/Jacket style
   },
-  {
-    id: 4,
-    name: "Prenda Drop 4",
-    price: 1500,
-    status: "available",
-    category: "Exclusivo",
+  { 
+    id: 4, 
+    name: "Prenda Drop 4", 
+    price: 1500, 
+    status: 'available', 
+    category: 'Exclusivo', 
     description: "Edición limitada.",
-    igLink:
-      "https://www.instagram.com/p/DYqdx31EXj8/?igsh=MWVvcHF0bnJwN3c3cA==",
-    imageUrl: extractInstagramImage(
-      "https://www.instagram.com/p/DYqdx31EXj8/?igsh=MWVvcHF0bnJwN3c3cA=="
-    ),
+    igLink: "https://www.instagram.com/p/DYqdx31EXj8/?igsh=MWVvcHF0bnJwN3c3cA==",
+    imageUrl: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600" // Playera/T-Shirt
   },
 ];
 

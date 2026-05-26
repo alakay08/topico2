@@ -34,11 +34,10 @@ const App = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Credenciales hardcodeadas para el prototipo
     if (authForm.username === 'admin' && authForm.password === 'streetwear2026') {
       setIsLoggedIn(true);
       setLoginError('');
-      localStorage.setItem('adminSession', 'active'); // Persistencia de sesión
+      localStorage.setItem('adminSession', 'active');
     } else {
       setLoginError('Usuario o contraseña incorrectos.');
     }
@@ -62,13 +61,11 @@ const App = () => {
   };
 
   const uploadToS3Mock = async (file) => {
-    // Simulación de carga a AWS S3 para el entorno de vista previa
     return new Promise((resolve) => {
       setTimeout(() => {
-        // Generamos una URL local temporal que simula el link público devuelto por AWS
         const mockUrl = URL.createObjectURL(file);
         resolve(mockUrl);
-      }, 1500); // Simulamos el retraso de red
+      }, 1500);
     });
   };
 
@@ -81,10 +78,8 @@ const App = () => {
     
     setIsUploading(true);
     try {
-      // 1. Simular subida a AWS S3
       const s3Url = await uploadToS3Mock(selectedFile);
 
-      // 2. Crear el objeto producto
       const item = {
         ...newProduct,
         id: Date.now(),
@@ -97,7 +92,6 @@ const App = () => {
       setNewProduct({ name: '', price: '', category: '', igLink: '' });
       setSelectedFile(null);
       
-      // Resetear el input file de forma segura
       const fileInput = document.getElementById('file-upload');
       if (fileInput) fileInput.value = '';
     } catch (error) {
@@ -122,9 +116,9 @@ const App = () => {
     return products.filter(p => p.status === filter);
   }, [products, filter]);
 
-  // --- VISTAS ---
+  // --- RENDERS INTERNOS (EVITAN LA PÉRDIDA DE ENFOQUE) ---
 
-  const LoginView = () => (
+  const renderLoginView = () => (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-100">
         <div className="text-center mb-8">
@@ -174,7 +168,7 @@ const App = () => {
     </div>
   );
 
-  const AdminView = () => (
+  const renderAdminView = () => (
     <div className="min-h-screen bg-slate-100 flex flex-col md:flex-row font-sans">
       <aside className="w-full md:w-96 bg-white border-r border-slate-200 p-6 flex flex-col overflow-y-auto">
         <div className="flex items-center gap-3 mb-8 pb-6 border-b border-slate-100">
@@ -351,7 +345,7 @@ const App = () => {
     </div>
   );
 
-  const LandingView = () => (
+  const renderLandingView = () => (
     <div className="min-h-screen bg-white text-slate-900 font-sans">
       <nav className="border-b border-slate-100 sticky top-0 bg-white/80 backdrop-blur-md z-50">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -446,9 +440,10 @@ const App = () => {
     </div>
   );
 
-  if (view === 'admin' && !isLoggedIn) return <LoginView />;
-  if (view === 'admin' && isLoggedIn) return <AdminView />;
-  return <LandingView />;
+  // --- CONTROLADOR DE VISTA DE COMPONENTE ---
+  if (view === 'admin' && !isLoggedIn) return renderLoginView();
+  if (view === 'admin' && isLoggedIn) return renderAdminView();
+  return renderLandingView();
 };
 
 export default App;
